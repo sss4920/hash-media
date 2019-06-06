@@ -1,0 +1,16 @@
+{% extends 'blog/layout.html'%}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p class="btn btn-white">제목을 달아랏</p>
+        <p>{{form.title}}</p>
+        <p class="btn btn-white">내용을 넣어랏</p>
+        <p>{{form.body}}</p>
+        <p class="btn btn-white">해시태그를 달아랏</p>
+        <p>{{form.hashtags}}</p>
+        <p class="btn btn-white">사진을 달아랏</p>
+        <p>{{form.image}}</p>
+    
+        <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
+{% endblock %}

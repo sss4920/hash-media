@@ -1,0 +1,30 @@
+{% extends 'blog/layout.html' %}
+
+{% block header %}
+<h1>{{ hashtag }}가 있는 게시글 목록</h1>
+<span class="subheading">해시태그 검색결과 페이지 입니다.</span>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for blog in hashtag.blog_set.all %}
+    <div class="post-preview">
+        <a href="{% url 'detail' blog.id %}">
+            <h2 class="post-title">
+                {{ blog.title }}
+            </h2>
+            <h3 class="post-subtitle">
+                {{ blog.summary }}
+            </h3>
+        </a>
+        <p class="post-meta">
+            {{ blog.pub_date }}
+        </p>
+    </div>
+    <hr>
+    {% endfor %}
+    <div class="clearfix">
+        <a class="btn btn-primary float -right" href="{% url 'home' %}">이전 페이지로 돌아가기 &rarr;</a>
+    </div>
+</div>
+{% endblock %}
